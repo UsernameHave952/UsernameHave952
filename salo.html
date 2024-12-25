@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Free & Brand Icons</title>
+    <!-- Font Awesome Kutubxonasi -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Icon of the website -->
+     <link rel="stylesheet" href="https://avatars.mds.yandex.net/i?id=6814b10bde4d8d529f78876d9aff74ad80ad4a41-7065990-images-thumbs&n=13">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        #search-bar {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .icon-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .icon-item {
+            text-align: center;
+            width: 120px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .icon-item:hover {
+            transform: scale(1.1);
+            background-color: #f9f9f9;
+        }
+        i {
+            font-size: 24px;
+            color: #4CAF50;
+        }
+        button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            font-size: 14px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>All Free & Brand Icons</h1>
+    <input type="text" id="search-bar" placeholder="Icon name...">
+
+    <div class="icon-list" id="icon-list"></div>
+
+    <script>
+        // Font Awesome tekin va brend ikonalar ro'yxati
+        const icons = [
+            // Brend ikonalar
+            'fab fa-facebook', 'fab fa-twitter', 'fab fa-instagram', 'fab fa-github',
+            'fab fa-youtube', 'fab fa-linkedin', 'fab fa-whatsapp', 'fab fa-reddit',
+            'fab fa-pinterest', 'fab fa-snapchat', 'fab fa-tiktok',
+            // Bepul ikonalar (Solid)
+            'fas fa-heart', 'fas fa-camera', 'fas fa-envelope', 'fas fa-bell',
+            'fas fa-trash', 'fas fa-car', 'fas fa-home', 'fas fa-user',
+            'fas fa-cloud', 'fas fa-star', 'fas fa-moon', 'fas fa-sun',
+            'fas fa-arrow-right', 'fas fa-arrow-left', 'fas fa-check', 'fas fa-times'
+        ];
+
+        // HTML-ga ikonalarni qo'shish
+        const iconList = document.getElementById('icon-list');
+        icons.forEach(icon => {
+            const iconItem = document.createElement('div');
+            iconItem.className = 'icon-item';
+            iconItem.innerHTML = `
+                <i class="${icon}"></i>
+                <p>${icon}</p>
+                <button onclick="copyCode('${icon}')">Copy Code</button>
+            `;
+            iconList.appendChild(iconItem);
+        });
+
+        // Kodni nusxalash funksiyasi
+        function copyCode(iconName) {
+            const code = `<i class="${iconName}"></i>`;
+            navigator.clipboard.writeText(code).then(() => {
+                alert(`Code copied: ${code}`);
+            });
+        }
+
+        // Qidiruv funksiyasi
+        document.getElementById('search-bar').addEventListener('input', function () {
+            const searchQuery = this.value.toLowerCase();
+            const icons = document.querySelectorAll('.icon-item');
+            icons.forEach(icon => {
+                const iconName = icon.querySelector('p').textContent.toLowerCase();
+                if (iconName.includes(searchQuery)) {
+                    icon.style.display = 'block';
+                } else {
+                    icon.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
