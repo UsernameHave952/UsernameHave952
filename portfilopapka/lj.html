@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erkinjon Portfolio</title>
+    <link rel="icon" href="DALL·E 2025-01-27 16.00.02 - A professional and modern logo for a web developer named 'Erkinjon'. The logo should feature the initials 'EJ' in a clean, minimalist style, with a co.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            user-select: none;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Menu icon */
+        .menu-icon {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #2980b9;
+            background-color: white;
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .menu-icon:hover {
+            transform: scale(1.1);
+            color: #3498db;
+        }
+
+        /* Side menu */
+        .menu {
+            position: fixed;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background: linear-gradient(135deg, #2980b9, #3498db);
+            padding-top: 60px;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+
+        .menu.show {
+            left: 0;
+        }
+
+        .menu a {
+            display: block;
+            color: white;
+            padding: 16px 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .menu a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding-left: 30px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        /* Main Content */
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: white;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            color: #2980b9;
+            margin-bottom: 20px;
+        }
+
+        header nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        header nav ul li a {
+            color: #333;
+            text-decoration: none;
+            padding: 5px 15px;
+            transition: all 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #2980b9;
+        }
+
+        /* Profile Section */
+        #asosiy {
+            text-align: center;
+            padding: 40px;
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #3498db;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .image:hover {
+            transform: scale(1.05);
+        }
+
+        /* Projects Section */
+        #loyihalar {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        #loyihalar p {
+            font-size: 1.5em;
+            color: #2980b9;
+            margin-bottom: 20px;
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 10px 0;
+            background-color: #3498db;
+            color: white;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .project-link:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Experience Section */
+        #tajriba {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        #tajriba p {
+            margin-top: 15px;
+            line-height: 2;
+        }
+
+        .skill-item {
+            background: #f8f9fa;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+        /* Aloqa formasi */
+        #aloqa {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 30px auto;
+        }
+
+        #aloqa input,
+        #aloqa textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: #f9f9f9;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        #aloqa input:focus,
+        #aloqa textarea:focus {
+            border-color: #3498db;
+            background-color: #f0f8ff;
+            outline: none;
+        }
+
+        #aloqa input[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        #aloqa input[type="submit"]:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Xabarlar uchun div */
+        #message {
+            margin-top: 10px;
+            font-size: 18px;
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-icon" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <div class="menu">
+        <div class="close-btn" onclick="toggleMenu()">
+            <i class="fas fa-xmark"></i>
+        </div>
+        <a href="#asosiy"><i class="fas fa-home"></i> Asosiy</a>
+        <a href="#loyihalar"><i class="fas fa-project-diagram"></i> Loyihalar</a>
+        <a href="#tajriba"><i class="fas fa-briefcase"></i> Tajriba</a>
+        <a href="#aloqa"><i class="fas fa-envelope"></i> Aloqa</a>
+    </div>
+
+    <header>
+        <h1>Erkinjon</h1>
+        <nav>
+            <ul>
+                <li><a href="#asosiy">Asosiy</a></li>
+                <li><a href="#loyihalar">Loyihalar</a></li>
+                <li><a href="#tajriba">Tajriba</a></li>
+                <li><a href="#aloqa">Aloqa</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="asosiy">
+            <img class="image" src="DALL·E 2025-01-27 16.00.02 - A professional and modern logo for a web developer named 'Erkinjon'. The logo should feature the initials 'EJ' in a clean, minimalist style, with a co.png" alt="Profile Picture">
+            <h2>Salom, men tajribali HTML5 va CSS3 dasturchiman.</h2>
+            <p>Web dasturlash sohasida professional tajribaga egaman.</p>
+        </section>
+
+        <section id="loyihalar">
+            <p><b>Mening Loyihalarim</b></p>
+            <div class="projects-grid">
+                <span class="project-link" onclick="window.open('index.html', '_self')">
+                    <i class="fas fa-spin fa-circle-notch"></i> Spin
+                </span>
+                <span class="project-link" onclick="window.open('index1.html', '_self')">
+                    <i class="fas fa-basketball-ball"></i> Ball animation
+                </span>
+                <span class="project-link" onclick="window.open('index2.html', '_self')">
+                    <i class="fa-solid fa-font fa-fade"></i> FADE in va FADE out
+                </span>
+                <span class="project-link" onclick="window.open('index3.html', '_self')">
+                    <i class="fas fa-bars"></i> Menu
+                </span>
+            </div>
+        </section>
+
+        <section id="tajriba">
+            <h2>Mening Tajribalarim:</h2>
+            <div class="skills">
+                <div class="skill-item">
+                    <i class="fas fa-magic"></i> Animatsiyalar
+                </div>
+                <div class="skill-item">
+                    <i class="fa-solid fa-spinner fa-spin-pulse"></i> Loader
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-mouse-pointer"></i> Hover va boshqa effectlar
+                </div>
+            </div>
+        </section>
+
+        <form id="aloqa">
+            <input type="text" name="name" placeholder="Ismingiz (Kiritish shart)" required>
+            <input type="email" name="email" placeholder="Emailingiz (Kiritish shart)" required>
+            <textarea name="message" placeholder="Xabaringiz (Kiritish shart)" required></textarea>
+            <input type="submit" value="Yuborish">
+        </form>
+
+        <!-- Xabarni ko'rsatish uchun div -->
+        <div id="message"></div>
+    </main>
+
+    <script>
+        // Menyuni ochish/yopish funksiyasi
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            menu.classList.toggle('show');
+        }
+
+        // Formni yuborish hodisasi
+        const form = document.getElementById('aloqa');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault(); // Form yuborilishini to'xtatish
+
+            const name = form.querySelector('input[name="name"]').value.trim();
+            const email = form.querySelector('input[name="email"]').value.trim();
+            const message = form.querySelector('textarea[name="message"]').value.trim();
+
+            if (!name || !email || !message) {
+                alert('Iltimos, barcha maydonlarni to‘ldiring!');
+            } else {
+                alert('Xabar yuborildi!');
+            }
+        });
+    </script>
+</body>
+</html>
